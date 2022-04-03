@@ -256,7 +256,7 @@ class EMNISTDataModule(pl.LightningDataModule):
 
         Args:
             - num_workers (int, optional): number of workers for federated learning. Defaults to 10.
-            - worker_bs (int, optional): batch size of the dataset for workers training locally. Defaults to 10.
+            - workers_batch_size (int, optional): batch size of the dataset for workers training locally. Defaults to 10.
 
         Returns:
             - Dict[int, DataLoader]: collection of workers as the keys and the PyTorch DataLoader object as values (used for training).
@@ -282,7 +282,7 @@ class EMNISTDataModule(pl.LightningDataModule):
 
         Args:
             - num_workers (int, optional): number of workers for federated learning. Defaults to 10.
-            - worker_bs (int, optional): batch size of the dataset for workers training locally. Defaults to 10.
+            - workers_batch_size (int, optional): batch size of the dataset for workers training locally. Defaults to 10.
             - niid_factor (int, optional): max number of classes held by each niid agent. lower the number, more measure of non-iidness. Defaults to 2.
 
         Returns:

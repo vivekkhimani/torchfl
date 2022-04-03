@@ -153,7 +153,7 @@ class CIFARDataModule(pl.LightningDataModule):
 
         Args:
             - stage (Optional[str], optional): Current stage of the PyTorch training process used for setup. Defaults to None.
-        """
+        """   
         total_images: Optional[int] = None
         num_validation_images: Optional[int] = None
         num_training_images: Optional[int] = None
@@ -186,7 +186,7 @@ class CIFARDataModule(pl.LightningDataModule):
                     transform=self.predict_transform,
                 )
         elif self.dataset_name == "cifar100":
-            total_images = len(CIFAR10(self.data_dir, train=True, download=True))
+            total_images = len(CIFAR100(self.data_dir, train=True, download=True))
             num_validation_images = int(total_images * self.validation_split)
             num_training_images = total_images - num_validation_images
             if (stage == "fit") or (not stage):
@@ -263,7 +263,7 @@ class CIFARDataModule(pl.LightningDataModule):
 
         Args:
             - num_workers (int, optional): number of workers for federated learning. Defaults to 10.
-            - worker_bs (int, optional): batch size of the dataset for workers training locally. Defaults to 10.
+            - workers_batch_size (int, optional): batch size of the dataset for workers training locally. Defaults to 10.
 
         Returns:
             - Dict[int, DataLoader]: collection of workers as the keys and the PyTorch DataLoader object as values (used for training).
@@ -289,7 +289,7 @@ class CIFARDataModule(pl.LightningDataModule):
 
         Args:
             - num_workers (int, optional): number of workers for federated learning. Defaults to 10.
-            - worker_bs (int, optional): batch size of the dataset for workers training locally. Defaults to 10.
+            - workers_batch_size (int, optional): batch size of the dataset for workers training locally. Defaults to 10.
             - niid_factor (int, optional): max number of classes held by each niid agent. lower the number, more measure of non-iidness. Defaults to 2.
 
         Returns:
